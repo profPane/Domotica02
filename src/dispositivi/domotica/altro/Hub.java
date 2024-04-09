@@ -19,14 +19,12 @@ public class Hub extends Dispositivo {
         super(sn, marca, modello, -1);
         this.dispositivi = new HashMap<>();
         this.collegamenti = new HashMap<>();
-        //this.conosciuti = new ArrayList<>();
         progressivoID=-1;
     }
 
     //associa un Dispositivo all'HUB
     public int associa(Dispositivo dispositivo) {
         dispositivi.put((++progressivoID), dispositivo);
-        //conosciuti.add(dispositivo.getClass());
         return progressivoID;
     }
 
@@ -42,7 +40,6 @@ public class Hub extends Dispositivo {
 
     //collega un sensore ad un attuatore tramite REFERENCE
     public String collega(Dispositivo sensore, Dispositivo attuatore){
-        Object arrayDisp[] = dispositivi.values().toArray();
         if ((sensore instanceof Sensore) && (attuatore instanceof Attuatore)){
                 collegamenti.put(((Sensore) sensore).getID(), (Attuatore) attuatore);
                 return "OK";
@@ -52,12 +49,9 @@ public class Hub extends Dispositivo {
 
     //comunica un evento all'HUB
     public String evento(Sensore sensore, String comando) {
-        //cerco l'eventuale Attuatore collegato a questo Sensore tramite ID nella lista dei collementi
+        //cerco l'eventuale Attuatore collegato a questo Sensore tramite ID
         Attuatore attuatore = collegamenti.get(sensore.getID());
-
-        if (attuatore==null) { 
-            System.err.println("HUBLOG: Nessun attuatore collegato a "+sensore );
-        }
+        if (attuatore==null) System.err.println("HUBLOG: Nessun attuatore collegato a "+sensore );
         else { //c'è un attuatore collegato
             String response="FAIL"; //risposta (al Sensore) nel caso peggiore
             if (comando.equals("PUSH")) { //se è un pulsate uso cambiaStato()
@@ -97,6 +91,7 @@ public class Hub extends Dispositivo {
 
     @Override
     public String toString() {
-        return "Informazioni sull'HUB: " +this.getSn()+ "\nDispositivi associati:\n" + listaDispositivi(Dispositivo.class);
+        return "Informazioni sull'HUB: " +this.getSn()
+        + "\nDispositivi associati:\n" + listaDispositivi(Dispositivo.class);
     }
 }

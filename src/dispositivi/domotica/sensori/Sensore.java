@@ -9,7 +9,8 @@ public class Sensore extends Dispositivo {
     }
 
     public String evento(Object stato){ 
-        //segnaposto per la gestione dell'evento diversa per ogni sensore
+        //segnaposto per la gestione dell'evento
+        //ogni sensore avrà il suo "personalizzato"
         return "FAIL"; 
     }
 }

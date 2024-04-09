@@ -12,9 +12,7 @@ public class Interruttore extends Sensore {
         this.stato = 0;
     }
 
-    public String stato(){ 
-        return stati[stato]; 
-    }
+    public String stato(){ return stati[stato]; }
 
     public String evento(String comando) { //simula l'uso del Sensore
         int posStato = Arrays.binarySearch(stati, comando); //lo cerco tra i possibili
