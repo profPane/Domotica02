@@ -1,6 +1,7 @@
 import dispositivi.domotica.altro.Hub;
 import dispositivi.domotica.attuatori.Lamp;
 import dispositivi.domotica.sensori.Presenza;
+import dispositivi.domotica.sensori.Sensore;
 
 public class App {
 
@@ -20,7 +21,11 @@ public class App {
         //se succede una presenza si accende la lamp1 per "avvertire" dell'accaduto
         hub.collega(sensPres1.getID(), lamp1.getID());
 
+        System.err.println("\nInfo sullo HUB:");
         // Stampa informazioni sui dispositivi
         System.out.println(hub);
+
+        System.err.println("\nLista Sensori:");
+        System.out.println(hub.listaDispositivi(Sensore.class));
     }
 }

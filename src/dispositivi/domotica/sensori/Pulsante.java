@@ -6,8 +6,10 @@ public class Pulsante extends Sensore {
         super(sn, marca, modello, carica);
     }
 
+    // simulo una pressione sul Pulsante tale da attivarlo
     public void premi() { this.evento("PUSH"); }
 
+    // simulo una pressione sul Pulsante tale da attivarlo
     public void evento(String evento) { 
         if (hub != null) hub.evento(this, evento); 
     }

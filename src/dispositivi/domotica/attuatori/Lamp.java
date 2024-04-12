@@ -14,6 +14,13 @@ public class Lamp extends Attuatore {
         this.stato = 0;
     }
     
+    int Lux(){
+        if(this.stati[this.stato].equals("OFF"))
+            return 0;
+        else 
+            return lux;
+    }
+
     public String cambiaStato() { //passo al prossimo stato
         return this.comando("PUSH");
     }
