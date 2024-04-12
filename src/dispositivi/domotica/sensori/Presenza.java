@@ -1,7 +1,7 @@
 package dispositivi.domotica.sensori;
 
 public class Presenza extends Sensore {
-    //attributi
+    //attributi vari
     String stati[]={"ON","OFF"};
 
     public Presenza(String sn, String marca, String modello, int carica) {
